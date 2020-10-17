@@ -7,8 +7,14 @@ export default function makeServer () {
 
       })
 
-      this.get('/api/weather/cities/:id', () => {
-        return 19
+      this.get('/api/weather/cities/:id', (schema, request) => {
+        const cities = {
+          moscow: 19,
+          berlin: 20,
+          london: 21
+        }
+
+        return cities[request.params.id]
       })
     }
   })
