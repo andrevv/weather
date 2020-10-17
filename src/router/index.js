@@ -5,7 +5,7 @@ const routes = [
     path: '/cities/:city',
     name: 'city',
     props: true,
-    component: () => import(/* webpackChunkName: "cities" */ '@/components/CityWeather.vue')
+    component: () => import(/* webpackChunkName: "city" */ '@/views/City.vue')
   }
 ]
 

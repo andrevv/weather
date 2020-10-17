@@ -1,9 +1,21 @@
 <template>
-  <div>
-    <router-link :to="{ name: 'city', params: { city: 'berlin' } }">Berlin</router-link> |
-    <router-link :to="{ name: 'city', params: { city: 'london' } }">London</router-link> |
-    <router-link :to="{ name: 'city', params: { city: 'moscow' } }">Moscow</router-link>
-    <router-view></router-view>
+  <div class="container main">
+    <div class="row justify-content-center">
+      <ul>
+        <li>
+          <router-link :to="{ name: 'city', params: { city: 'berlin' } }">Berlin</router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'city', params: { city: 'london' } }">London</router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'city', params: { city: 'moscow' } }">Moscow</router-link>
+        </li>
+      </ul>
+    </div>
+    <div class="col">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -16,4 +28,26 @@ export default {
 </script>
 
 <style>
+.main {
+  margin-top: 50px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  padding: 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
 </style>
