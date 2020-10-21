@@ -1,9 +1,12 @@
 <template>
-  <h1>{{temperature}} &#8451;</h1>
+  <h1>{{showCelsius ? temperature.celsius : temperature.fahrenheit}}
+    <a :href="showCelsius ? null : '#'" @click="showCelsius = !showCelsius">&#8451;</a>/
+    <a :href="showCelsius ? '#' : null" @click="showCelsius = !showCelsius">&#8457;</a>
+  </h1>
 </template>
 
 <script lang="ts">
-import { ref, onUpdated } from 'vue'
+import { ref, onMounted } from 'vue'
 export default {
   name: 'CityWeather',
   props: {
@@ -13,17 +16,26 @@ export default {
     }
   },
   setup (props) {
-    const temperature = ref(0);
+    const temperature = ref({})
+    const showCelsius = ref(true)
 
-    onUpdated(() => {
-      console.log('onMounted')
+    onMounted(() => {
       fetch(`/api/weather/cities/${props.city}`)
-        .then(resp => resp.text())
-        .then(data => { temperature.value = parseInt(data) })
+        .then(resp => resp.json())
+        .then(data => { temperature.value = data })
     })
 
+    const switchScale = () => {
+      console.log('switchScale')
+    }
+
+    const href = '#'
+
     return {
-      temperature
+      temperature,
+      showCelsius,
+      switchScale,
+      href
     }
   }
 }

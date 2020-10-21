@@ -9,9 +9,9 @@ export default function makeServer () {
 
       this.get('/api/weather/cities/:id', (schema, request) => {
         const cities = {
-          moscow: 19,
-          berlin: 20,
-          london: 21
+          moscow: { celsius: 19, fahrenheit: 66 },
+          berlin: { celsius: 20, fahrenheit: 68 },
+          london: { celsius: 21, fahrenheit: 70 }
         }
 
         return cities[request.params.id]
