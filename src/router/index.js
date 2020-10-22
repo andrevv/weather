@@ -4,7 +4,7 @@ const routes = [
   {
     path: '/cities/:city',
     name: 'city',
-    props: true,
+    props: ({ params, query }) => ({ city: params.city, scale: query.scale }),
     component: () => import(/* webpackChunkName: "city" */ '@/views/City.vue')
   }
 ]

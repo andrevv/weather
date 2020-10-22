@@ -6,18 +6,24 @@
 </template>
 
 <script lang="ts">
+
 import { ref, onMounted } from 'vue'
+
 export default {
   name: 'CityWeather',
   props: {
     city: {
       type: String,
       required: true
+    },
+    scale: {
+      type: String,
+      default: 'celsius'
     }
   },
   setup (props) {
     const temperature = ref({})
-    const showCelsius = ref(true)
+    const showCelsius = ref(props.scale === 'celsius')
 
     onMounted(() => {
       fetch(`/api/weather/cities/${props.city}`)
@@ -25,17 +31,9 @@ export default {
         .then(data => { temperature.value = data })
     })
 
-    const switchScale = () => {
-      console.log('switchScale')
-    }
-
-    const href = '#'
-
     return {
       temperature,
-      showCelsius,
-      switchScale,
-      href
+      showCelsius
     }
   }
 }
