@@ -1,5 +1,9 @@
 <template>
-  <CityTemperature :city="city" />
+  <div class="container">
+    <div class="row justify-content-center">
+      <CityTemperature :city="city" />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
