@@ -28,7 +28,7 @@ export default {
     onMounted(() => {
       fetch(`/api/weather/cities/${props.city}`)
         .then(resp => resp.json())
-        .then(data => { temperature.value = data })
+        .then(data => { temperature.value = data.temperature })
     })
 
     return {

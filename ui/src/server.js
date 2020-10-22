@@ -14,7 +14,10 @@ export default function makeServer () {
           london: { celsius: 21, fahrenheit: 70 }
         }
 
-        return cities[request.params.id]
+        return {
+          city: request.params.id,
+          temperature: cities[request.params.id]
+        }
       })
     }
   })
