@@ -1,8 +1,10 @@
 package dev.andrevv.weather.api.client.openweathermap;
 
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 @Data
+@RequiredArgsConstructor
 public class OpenWeatherResponse {
 
     public OpenWeatherResponse() {

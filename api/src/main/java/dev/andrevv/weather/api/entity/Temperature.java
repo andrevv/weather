@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class Temperature {
-    private final double celsius;
-    private final double fahrenheit;
+    private final long celsius;
+    private final long fahrenheit;
 }
