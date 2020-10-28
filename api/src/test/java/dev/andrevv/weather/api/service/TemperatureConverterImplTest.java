@@ -23,6 +23,6 @@ class TemperatureConverterImplTest {
         double fahrenheit = converter.toFahrenheit(celsius);
 
         // then
-        assertThat(68).isEqualTo(fahrenheit);
+        assertThat(68.0).isEqualTo(fahrenheit);
     }
 }
