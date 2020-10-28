@@ -1,13 +1,15 @@
 package dev.andrevv.weather.api.client.openweathermap;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
 public class OpenWeatherMain {
 
     public OpenWeatherMain() {
-        temp = 0;
+        temperature = 0;
     }
 
-    private final double temp;
+    @JsonProperty("temp")
+    private final double temperature;
 }

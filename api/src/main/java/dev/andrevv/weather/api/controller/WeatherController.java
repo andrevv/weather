@@ -24,7 +24,7 @@ public class WeatherController {
     @GetMapping("/cities/{city}")
     public Weather getForCity(@PathVariable String city) {
         var response = openWeatherClient.getWeather(city);
-        var celsius = response.getMain().getTemp();
+        var celsius = response.getMain().getTemperature();
         return new Weather(city, new Temperature(celsius, temperatureConverter.toFahrenheit(celsius)));
     }
 }
