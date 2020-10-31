@@ -5,7 +5,9 @@ import router from './router'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-makeServer()
+if (process.env.NODE_ENV !== 'production') {
+  makeServer()
+}
 
 const app = createApp(App)
 
