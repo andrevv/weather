@@ -10,7 +10,7 @@
 import { ref, onMounted } from 'vue'
 
 export default {
-  name: 'CityWeather',
+  name: 'CityTemperature',
   props: {
     city: {
       type: String,
