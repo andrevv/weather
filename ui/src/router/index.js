@@ -2,6 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
+    path: '/',
+    redirect: '/cities/moscow'
+  },
+  {
     path: '/cities/:city',
     name: 'city',
     props: ({ params, query }) => ({ city: params.city, scale: query.scale }),

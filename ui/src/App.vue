@@ -50,4 +50,12 @@ li a {
   text-decoration: none;
 }
 
+li a.router-link-active {
+  color: black;
+}
+
+li a.router-link-exact-active {
+  color: black;
+}
+
 </style>
