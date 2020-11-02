@@ -7,7 +7,7 @@
 
 <script lang="ts">
 
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, reactive } from 'vue'
 
 export default {
   name: 'CityTemperature',
@@ -22,13 +22,19 @@ export default {
     }
   },
   setup (props) {
-    const temperature = ref({})
+    const temperature = reactive<Temperature>({
+      celsius: 0,
+      fahrenheit: 0
+    })
     const showCelsius = ref(props.scale === 'celsius')
 
     onMounted(() => {
       fetch(`/api/weather/cities/${props.city}`)
         .then(resp => resp.json())
-        .then(data => { temperature.value = data.temperature })
+        .then(data => {
+          temperature.celsius = data.temperature.celsius
+          temperature.fahrenheit = data.temperature.fahrenheit
+        })
     })
 
     return {
@@ -37,6 +43,12 @@ export default {
     }
   }
 }
+
+interface Temperature {
+  celsius: number,
+  fahrenheit: number
+}
+
 </script>
 
 <style scoped>
