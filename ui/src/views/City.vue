@@ -9,7 +9,7 @@
 <script lang="ts">
 
 import { defineComponent } from 'vue'
-import CityTemperature from '@/components/CityTemperature'
+import CityTemperature from '@/components/CityTemperature.vue'
 
 export default defineComponent({
   name: 'Home',
