@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
-    path: '/weather/cities/:city',
+    path: '/cities/:city',
     name: 'city',
     props: ({ params, query }) => ({ city: params.city, scale: query.scale }),
     component: () => import(/* webpackChunkName: "city" */ '@/views/City.vue')
