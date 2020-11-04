@@ -1,8 +1,8 @@
 package dev.andrevv.weather.api.service;
 
-import dev.andrevv.weather.api.client.openweathermap.OpenWeatherClient;
-import dev.andrevv.weather.api.client.openweathermap.OpenWeatherMain;
-import dev.andrevv.weather.api.client.openweathermap.OpenWeatherResponse;
+import dev.andrevv.weather.api.client.openweather.OpenWeatherClient;
+import dev.andrevv.weather.api.client.openweather.OpenWeatherMain;
+import dev.andrevv.weather.api.client.openweather.OpenWeatherResponse;
 import dev.andrevv.weather.api.entity.Weather;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

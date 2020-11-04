@@ -1,7 +1,7 @@
 package dev.andrevv.weather.api.config;
 
-import dev.andrevv.weather.api.client.openweathermap.OpenWeatherClient;
-import dev.andrevv.weather.api.client.openweathermap.OpenWeatherClientImpl;
+import dev.andrevv.weather.api.client.openweather.OpenWeatherClient;
+import dev.andrevv.weather.api.client.openweather.OpenWeatherClientImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;

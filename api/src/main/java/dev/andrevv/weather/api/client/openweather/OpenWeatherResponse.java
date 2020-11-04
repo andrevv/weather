@@ -1,4 +1,4 @@
-package dev.andrevv.weather.api.client.openweathermap;
+package dev.andrevv.weather.api.client.openweather;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,6 @@
 package dev.andrevv.weather.api.service;
 
-import dev.andrevv.weather.api.client.openweathermap.OpenWeatherClient;
+import dev.andrevv.weather.api.client.openweather.OpenWeatherClient;
 import dev.andrevv.weather.api.entity.Temperature;
 import dev.andrevv.weather.api.entity.Weather;
 import org.springframework.stereotype.Service;
