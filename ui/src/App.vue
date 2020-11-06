@@ -28,6 +28,18 @@ export default {
 </script>
 
 <style>
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: rgb(18,5,37);
+  background: linear-gradient(0deg, rgba(18,5,37,1) 0%, rgba(17,28,208,1) 40%, rgba(0,173,255,1) 85%);
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+}
+
 .main {
   margin-top: 50px;
 }
