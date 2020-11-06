@@ -28,7 +28,7 @@ public class OpenWeatherForecastItem {
 
     @JsonProperty("main")
     private void unpackMain(Map<String, Object> main) {
-        this.temperature = (double) main.get("temp");
+        this.temperature = Double.parseDouble(main.get("temp").toString());
     }
 
     @JsonProperty("weather")
