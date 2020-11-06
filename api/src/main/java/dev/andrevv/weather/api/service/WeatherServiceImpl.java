@@ -38,7 +38,7 @@ public class WeatherServiceImpl implements WeatherService {
         var response = openWeatherClient.getForecast(city);
         return new Forecast(
                 response.getCity(),
-                response.getWeather()
+                response.getForecasts()
                         .stream()
                         .map(item -> new ForecastItem(
                                 item.getDate(),

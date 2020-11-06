@@ -20,7 +20,7 @@ public class OpenWeatherForecast {
 
     @JsonProperty("list")
     @JsonDeserialize(contentAs = OpenWeatherForecastItem.class)
-    private List<OpenWeatherForecastItem> weather;
+    private List<OpenWeatherForecastItem> forecasts;
 
     @JsonProperty("city")
     private void unpackCity(Map<String, Object> city) {

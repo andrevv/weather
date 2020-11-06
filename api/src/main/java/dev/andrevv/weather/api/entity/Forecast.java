@@ -7,5 +7,5 @@ import java.util.List;
 @Data
 public class Forecast {
     private final String city;
-    private final List<ForecastItem> weather;
+    private final List<ForecastItem> forecasts;
 }

@@ -81,8 +81,8 @@ class WeatherServiceImplTest {
 
         // then
         assertThat(forecast.getCity()).isEqualTo(city);
-        assertThat(forecast.getWeather()).hasSize(3);
-        assertThat(forecast.getWeather())
+        assertThat(forecast.getForecasts()).hasSize(3);
+        assertThat(forecast.getForecasts())
                 .extracting("date", "temperature", "description")
                 .contains(
                         tuple(Date.from(now.plusSeconds(10)), 1.25, "cloudy"),
