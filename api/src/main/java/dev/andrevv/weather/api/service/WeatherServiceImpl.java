@@ -21,7 +21,7 @@ public class WeatherServiceImpl implements WeatherService {
     @Override
     public Weather getWeather(String city) {
         var response = openWeatherClient.getWeather(city);
-        var celsius = response.getMain().getTemperature();
+        var celsius = response.getTemperature();
         return new Weather(
                 city,
                 new Temperature(

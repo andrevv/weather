@@ -1,8 +1,7 @@
 package dev.andrevv.weather.api.service;
 
 import dev.andrevv.weather.api.client.openweather.OpenWeatherClient;
-import dev.andrevv.weather.api.client.openweather.OpenWeatherMain;
-import dev.andrevv.weather.api.client.openweather.OpenWeatherResponse;
+import dev.andrevv.weather.api.client.openweather.OpenWeatherWeather;
 import dev.andrevv.weather.api.entity.Weather;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -34,7 +33,7 @@ class WeatherServiceImplTest {
         String city = "moscow";
         double celsius = 20.0;
         double fahrenheit = 68.0;
-        OpenWeatherResponse response = new OpenWeatherResponse(city, new OpenWeatherMain(celsius));
+        OpenWeatherWeather response = new OpenWeatherWeather(city, celsius);
         given(openWeatherClient.getWeather(city)).willReturn(response);
         given(temperatureConverter.toFahrenheit(celsius)).willReturn(fahrenheit);
 

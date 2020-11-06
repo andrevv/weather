@@ -13,10 +13,10 @@ public class OpenWeatherClientImpl implements OpenWeatherClient {
     }
 
     @Override
-    public OpenWeatherResponse getWeather(String city) {
+    public OpenWeatherWeather getWeather(String city) {
         String url = String.format("https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=metric", city, apiKey);
 
-        var r = rest.getForEntity(url, OpenWeatherResponse.class);
+        var r = rest.getForEntity(url, OpenWeatherWeather.class);
 
         return r.getBody();
     }
