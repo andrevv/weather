@@ -90,7 +90,7 @@ class WeatherControllerTest {
 
         // when
         // then
-        mvc.perform(MockMvcRequestBuilders.get("/api/weather/forecast/vienna"))
+        mvc.perform(MockMvcRequestBuilders.get("/api/weather/cities/vienna/forecast"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().json(forecastJson.write(forecast).getJson()));
