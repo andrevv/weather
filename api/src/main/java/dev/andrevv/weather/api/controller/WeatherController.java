@@ -20,7 +20,7 @@ public class WeatherController {
     }
 
     @GetMapping(value = "/cities/{city}", produces = "application/json")
-    public Weather getForCity(@PathVariable String city) {
+    public Weather getWeather(@PathVariable String city) {
         log.info("Got a request for '{}'.", city);
         return weatherService.getWeather(city);
     }
