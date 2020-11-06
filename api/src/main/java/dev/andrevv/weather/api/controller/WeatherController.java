@@ -1,5 +1,6 @@
 package dev.andrevv.weather.api.controller;
 
+import dev.andrevv.weather.api.entity.Forecast;
 import dev.andrevv.weather.api.entity.Weather;
 import dev.andrevv.weather.api.service.WeatherService;
 import lombok.extern.slf4j.Slf4j;
@@ -23,5 +24,11 @@ public class WeatherController {
     public Weather getWeather(@PathVariable String city) {
         log.info("Got a weather request for '{}'.", city);
         return weatherService.getWeather(city);
+    }
+
+    @GetMapping(value = "/forecast/{city}", produces = "application/json")
+    public Forecast getForecast(@PathVariable String city) {
+        log.info("Got a forecast request for {}", city);
+        return weatherService.getForecast(city);
     }
 }
