@@ -28,7 +28,7 @@ public class WeatherController {
 
     @GetMapping(value = "/cities/{city}/forecast", produces = "application/json")
     public Forecast getForecast(@PathVariable String city) {
-        log.info("Got a forecast request for '{}'", city);
+        log.info("Got a forecast request for '{}'.", city);
         return weatherService.getForecast(city);
     }
 }
