@@ -2,10 +2,10 @@ package dev.andrevv.weather.api.entity;
 
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 public class ForecastItem {
-    private final LocalDateTime date;
+    private final LocalDate date;
     private final double temperature;
 }

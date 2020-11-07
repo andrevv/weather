@@ -70,7 +70,7 @@ class WeatherControllerTest {
 
         // given
         String city = "vienna";
-        LocalDateTime now = LocalDateTime.of(LocalDate.now(ZoneOffset.UTC), LocalTime.MIDNIGHT);
+        LocalDate now = LocalDate.now(ZoneOffset.UTC);
         Forecast forecast = new Forecast(
                 city,
                 List.of(

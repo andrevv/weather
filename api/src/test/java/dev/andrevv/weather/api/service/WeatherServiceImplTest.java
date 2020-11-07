@@ -95,7 +95,7 @@ class WeatherServiceImplTest {
         assertThat(forecast.getForecasts())
                 .extracting("date", "temperature")
                 .contains(
-                        tuple(now.plusDays(1), 2.25),
-                        tuple(now.plusDays(2), 1.75));
+                        tuple(now.toLocalDate().plusDays(1), 2.25),
+                        tuple(now.toLocalDate().plusDays(2), 1.75));
     }
 }

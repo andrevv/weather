@@ -51,7 +51,7 @@ public class WeatherServiceImpl implements WeatherService {
                 items.entrySet()
                         .stream()
                         .map(item -> new ForecastItem(
-                                LocalDateTime.of(item.getKey(), LocalTime.MIDNIGHT),
+                                item.getKey(),
                                 item.getValue()))
                         .collect(Collectors.toList()));
     }
