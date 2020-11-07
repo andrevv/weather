@@ -42,13 +42,16 @@ public class WeatherServiceImpl implements WeatherService {
     public Forecast getForecast(String city) {
         var response = openWeatherClient.getForecast(city);
 
-        var items = response.getForecasts()
+        var dailyAverage = response.getForecasts()
                 .stream()
-                .collect(groupingBy(f -> f.getDate().toLocalDate(), Collectors.averagingDouble(OpenWeatherForecastItem::getTemperature)));
+                .collect(
+                        groupingBy(
+                                f -> f.getDate().toLocalDate(),
+                                Collectors.averagingDouble(OpenWeatherForecastItem::getTemperature)));
 
         return new Forecast(
                 response.getCity(),
-                items.entrySet()
+                dailyAverage.entrySet()
                         .stream()
                         .map(item -> new ForecastItem(
                                 item.getKey(),
