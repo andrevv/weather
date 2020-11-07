@@ -7,5 +7,5 @@ import java.time.LocalDate;
 @Data
 public class ForecastItem {
     private final LocalDate date;
-    private final double temperature;
+    private final long temperature;
 }

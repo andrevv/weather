@@ -75,14 +75,14 @@ class WeatherControllerTest {
                 city,
                 List.of(
                         new ForecastItem(
-                                now.plusDays(11),
-                                1.25),
+                                now.plusDays(1),
+                                1),
                         new ForecastItem(
                                 now.plusDays(2),
-                                2.25),
+                                2),
                         new ForecastItem(
                                 now.plusDays(3),
-                                3.25)
+                                3)
                 ));
         given(weatherService.getForecast(city)).willReturn(forecast);
 

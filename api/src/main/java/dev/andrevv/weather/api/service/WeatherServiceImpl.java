@@ -52,7 +52,7 @@ public class WeatherServiceImpl implements WeatherService {
                         .stream()
                         .map(item -> new ForecastItem(
                                 item.getKey(),
-                                item.getValue()))
+                                Math.round(item.getValue())))
                         .collect(Collectors.toList()));
     }
 }
