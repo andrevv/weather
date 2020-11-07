@@ -11,8 +11,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.time.Instant;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneOffset;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -58,19 +60,27 @@ class WeatherServiceImplTest {
     void getForecast() {
         // given
         String city = "moscow";
-        Instant now = Instant.now();
+        LocalDateTime now = LocalDateTime.of(LocalDate.now(ZoneOffset.UTC), LocalTime.MIDNIGHT);
         List<OpenWeatherForecastItem> items = List.of(
                 new OpenWeatherForecastItem(
-                        Date.from(now.plusSeconds(10)),
+                        now.plusDays(1).plusHours(1),
                         1.25,
                         "cloudy"),
                 new OpenWeatherForecastItem(
-                        Date.from(now.plusSeconds(20)),
+                        now.plusDays(1).plusHours(2),
                         2.25,
                         "rainy"),
                 new OpenWeatherForecastItem(
-                        Date.from(now.plusSeconds(30)),
+                        now.plusDays(1).plusHours(3),
                         3.25,
+                        "clear"),
+                new OpenWeatherForecastItem(
+                        now.plusDays(2).plusHours(1),
+                        1.25,
+                        "cloudy"),
+                new OpenWeatherForecastItem(
+                        now.plusDays(2).plusHours(2),
+                        2.25,
                         "clear")
         );
         OpenWeatherForecast response = new OpenWeatherForecast(city, items);
@@ -81,12 +91,14 @@ class WeatherServiceImplTest {
 
         // then
         assertThat(forecast.getCity()).isEqualTo(city);
-        assertThat(forecast.getForecasts()).hasSize(3);
+        assertThat(forecast.getForecasts()).hasSize(5);
         assertThat(forecast.getForecasts())
                 .extracting("date", "temperature", "description")
                 .contains(
-                        tuple(Date.from(now.plusSeconds(10)), 1.25, "cloudy"),
-                        tuple(Date.from(now.plusSeconds(20)), 2.25, "rainy"),
-                        tuple(Date.from(now.plusSeconds(30)), 3.25, "clear"));
+                        tuple(now.plusDays(1).plusHours(1), 1.25, "cloudy"),
+                        tuple(now.plusDays(1).plusHours(2), 2.25, "rainy"),
+                        tuple(now.plusDays(1).plusHours(3), 3.25, "clear"),
+                        tuple(now.plusDays(2).plusHours(1), 1.25, "cloudy"),
+                        tuple(now.plusDays(2).plusHours(2), 2.25, "clear"));
     }
 }

@@ -1,7 +1,6 @@
 package dev.andrevv.weather.api.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import dev.andrevv.weather.api.entity.Forecast;
 import dev.andrevv.weather.api.entity.ForecastItem;
 import dev.andrevv.weather.api.entity.Temperature;
@@ -17,8 +16,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import java.sql.Date;
-import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneOffset;
 import java.util.List;
 
 import static org.mockito.BDDMockito.given;
@@ -32,6 +33,9 @@ class WeatherControllerTest {
     @Autowired
     private MockMvc mvc;
 
+    @Autowired
+    private ObjectMapper mapper;
+
     private JacksonTester<Weather> weatherJson;
     private JacksonTester<Forecast> forecastJson;
 
@@ -40,10 +44,7 @@ class WeatherControllerTest {
 
     @BeforeEach
     void setUp() {
-        JacksonTester.initFields(
-                this,
-                new ObjectMapper()
-                        .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS));
+        JacksonTester.initFields(this, mapper);
     }
 
     @Test
@@ -69,24 +70,26 @@ class WeatherControllerTest {
 
         // given
         String city = "vienna";
-        Instant now = Instant.now();
+        LocalDateTime now = LocalDateTime.of(LocalDate.now(ZoneOffset.UTC), LocalTime.MIDNIGHT);
         Forecast forecast = new Forecast(
                 city,
                 List.of(
                         new ForecastItem(
-                                Date.from(now.plusSeconds(10)),
+                                now.plusSeconds(10),
                                 1.25,
                                 "cloudy"),
                         new ForecastItem(
-                                Date.from(now.plusSeconds(20)),
+                                now.plusSeconds(20),
                                 2.25,
                                 "rainy"),
                         new ForecastItem(
-                                Date.from(now.plusSeconds(10)),
+                                now.plusSeconds(30),
                                 3.25,
                                 "clear")
                 ));
         given(weatherService.getForecast(city)).willReturn(forecast);
+
+        String json = forecastJson.write(forecast).getJson();
 
         // when
         // then

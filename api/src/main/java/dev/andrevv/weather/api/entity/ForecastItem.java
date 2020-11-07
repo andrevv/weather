@@ -2,11 +2,11 @@ package dev.andrevv.weather.api.entity;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 public class ForecastItem {
-    private final Date date;
+    private final LocalDateTime date;
     private final double temperature;
     private final String description;
 }

@@ -8,8 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.Instant;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +21,7 @@ public class OpenWeatherForecastItem {
 
     @JsonProperty("dt")
     @JsonDeserialize(converter = OpenWeatherDateConverter.class)
-    private Date date;
+    private LocalDateTime date;
 
     private double temperature;
     private String description;
@@ -36,11 +36,11 @@ public class OpenWeatherForecastItem {
         this.description = (String) weather.get(0).get("description");
     }
 
-    static class OpenWeatherDateConverter extends StdConverter<Long, Date> {
+    static class OpenWeatherDateConverter extends StdConverter<Long, LocalDateTime> {
 
         @Override
-        public Date convert(Long value) {
-            return Date.from(Instant.ofEpochSecond(value));
+        public LocalDateTime convert(Long value) {
+            return LocalDateTime.ofEpochSecond(value, 0, ZoneOffset.UTC);
         }
     }
 }
