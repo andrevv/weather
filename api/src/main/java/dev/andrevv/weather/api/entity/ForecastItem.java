@@ -8,5 +8,4 @@ import java.time.LocalDateTime;
 public class ForecastItem {
     private final LocalDateTime date;
     private final double temperature;
-    private final String description;
 }

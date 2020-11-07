@@ -75,21 +75,16 @@ class WeatherControllerTest {
                 city,
                 List.of(
                         new ForecastItem(
-                                now.plusSeconds(10),
-                                1.25,
-                                "cloudy"),
+                                now.plusDays(11),
+                                1.25),
                         new ForecastItem(
-                                now.plusSeconds(20),
-                                2.25,
-                                "rainy"),
+                                now.plusDays(2),
+                                2.25),
                         new ForecastItem(
-                                now.plusSeconds(30),
-                                3.25,
-                                "clear")
+                                now.plusDays(3),
+                                3.25)
                 ));
         given(weatherService.getForecast(city)).willReturn(forecast);
-
-        String json = forecastJson.write(forecast).getJson();
 
         // when
         // then
