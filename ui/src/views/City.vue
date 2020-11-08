@@ -1,7 +1,7 @@
 <template>
   <div class="box-container">
     <div class="weather">
-      <h1>{{city}}</h1>
+      <h1>{{cityName}}</h1>
     </div>
     <div class="forecast">
       <div class="today-temperature">
@@ -38,7 +38,7 @@
 
 <script lang="ts">
 
-import { defineComponent, ref, onMounted } from 'vue'
+import { defineComponent, ref, onMounted, computed } from 'vue'
 import CityTemperature from '@/components/CityTemperature.vue'
 import CityTemperatureForecast from '@/components/CityTemperatureForecast.vue'
 import CityDate from '@/components/CityDate.vue'
@@ -69,8 +69,11 @@ export default defineComponent({
         })
     })
 
+    const cityName = computed(() => props.city.charAt(0).toUpperCase() + props.city.slice(1))
+
     return {
-      description
+      description,
+      cityName
     }
   }
 })
