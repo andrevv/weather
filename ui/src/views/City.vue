@@ -1,73 +1,51 @@
 <template>
   <div class="box-container">
     <div class="weather">
-      <CityTemperature :city="city" />
+      <h1>{{city}}</h1>
     </div>
     <div class="forecast">
       <div class="today-temperature">
-        <h1>33&#186;</h1>
-        <p>Monday 16<sup>th</sup></p>
+        <CityTemperature :city="city" />
+        <CityDate />
       </div>
       <div class="today-temperature-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><g><circle cx="32" cy="32" r="11.64" fill="#f4a71d"/><path fill="none" stroke="#f4a71d" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M32 15.71V9.5M32 54.5v-6.21M43.52 20.48l4.39-4.39M16.09 47.91l4.39-4.39M20.48 20.48l-4.39-4.39M47.91 47.91l-4.39-4.39M15.71 32H9.5M54.5 32h-6.21"/></g></svg>
       </div>
       <div class="forecast-item forecast1">
-        <p>Tue</p>
-        <p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><g><circle cx="32" cy="32" r="11.64" fill="#f4a71d"/><path fill="none" stroke="#f4a71d" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M32 15.71V9.5M32 54.5v-6.21M43.52 20.48l4.39-4.39M16.09 47.91l4.39-4.39M20.48 20.48l-4.39-4.39M47.91 47.91l-4.39-4.39M15.71 32H9.5M54.5 32h-6.21"/></g></svg>
-        </p>
-        <p>31&#186;</p>
+        <CityTemperatureForecast weekday="tuesday" temperature="31" />
       </div>
       <div class="forecast-item forecast2">
-        <p>Wed</p>
-        <p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><g><circle cx="32" cy="32" r="11.64" fill="#f4a71d"/><path fill="none" stroke="#f4a71d" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M32 15.71V9.5M32 54.5v-6.21M43.52 20.48l4.39-4.39M16.09 47.91l4.39-4.39M20.48 20.48l-4.39-4.39M47.91 47.91l-4.39-4.39M15.71 32H9.5M54.5 32h-6.21"/></g></svg>
-        </p>
-        <p>30&#186;</p>
+        <CityTemperatureForecast weekday="wednesday" temperature="30" />
       </div>
       <div class="forecast-item forecast3">
-        <p>Thu</p>
-        <p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><g><circle cx="32" cy="32" r="11.64" fill="#f4a71d"/><path fill="none" stroke="#f4a71d" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M32 15.71V9.5M32 54.5v-6.21M43.52 20.48l4.39-4.39M16.09 47.91l4.39-4.39M20.48 20.48l-4.39-4.39M47.91 47.91l-4.39-4.39M15.71 32H9.5M54.5 32h-6.21"/></g></svg>
-        </p>
-        <p>33&#186;</p>
+        <CityTemperatureForecast weekday="thursday" temperature="33" />
       </div>
       <div class="forecast-item forecast4">
-        <p>Fri</p>
-        <p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><g><circle cx="32" cy="32" r="11.64" fill="#f4a71d"/><path fill="none" stroke="#f4a71d" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M32 15.71V9.5M32 54.5v-6.21M43.52 20.48l4.39-4.39M16.09 47.91l4.39-4.39M20.48 20.48l-4.39-4.39M47.91 47.91l-4.39-4.39M15.71 32H9.5M54.5 32h-6.21"/></g></svg>
-        </p>
-        <p>32&#186;</p>
+        <CityTemperatureForecast weekday="friday" temperature="32" />
       </div>
       <div class="forecast-item forecast5">
-        <p>Sat</p>
-        <p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><g><circle cx="32" cy="32" r="11.64" fill="#f4a71d"/><path fill="none" stroke="#f4a71d" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M32 15.71V9.5M32 54.5v-6.21M43.52 20.48l4.39-4.39M16.09 47.91l4.39-4.39M20.48 20.48l-4.39-4.39M47.91 47.91l-4.39-4.39M15.71 32H9.5M54.5 32h-6.21"/></g></svg>
-        </p>
-        <p>33&#186;</p>
+        <CityTemperatureForecast weekday="saturday" temperature="33" />
       </div>
       <div class="forecast-item forecast6">
-        <p>Sun</p>
-        <p>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><g><circle cx="32" cy="32" r="11.64" fill="#f4a71d"/><path fill="none" stroke="#f4a71d" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3" d="M32 15.71V9.5M32 54.5v-6.21M43.52 20.48l4.39-4.39M16.09 47.91l4.39-4.39M20.48 20.48l-4.39-4.39M47.91 47.91l-4.39-4.39M15.71 32H9.5M54.5 32h-6.21"/></g></svg>
-        </p>
-        <p>31&#186;</p>
+        <CityTemperatureForecast weekday="sunday" temperature="31" />
       </div>
     </div>
   </div>
 </template>
 
-<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><g><path fill="#efefef" stroke="#efefef" stroke-miterlimit="10" stroke-width="3" d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z"/><animateTransform attributeName="transform" dur="7s" repeatCount="indefinite" type="translate" values="-3 0; 3 0; -3 0"/></g></svg> -->
-
 <script lang="ts">
 
 import { defineComponent } from 'vue'
 import CityTemperature from '@/components/CityTemperature.vue'
+import CityTemperatureForecast from '@/components/CityTemperatureForecast.vue'
+import CityDate from '@/components/CityDate.vue'
 
 export default defineComponent({
   name: 'Home',
   components: {
-    CityTemperature
+    CityTemperature,
+    CityTemperatureForecast,
+    CityDate
   },
   props: {
     city: {
@@ -86,7 +64,6 @@ sup {
 
 .box-container {
   display: flex;
-  border: goldenrod solid 10px;
   min-height: 50vh;
   flex-wrap: wrap;
 }
@@ -94,11 +71,15 @@ sup {
 .weather {
   background: rgba(79, 173, 235, 1);
   width: 100%;
+  height: 30vh;
+  color: white;
+  padding: 20px;
 }
 
 .forecast {
   display: flex;
   width: 100%;
+  height: 20vh;
 }
 
 .today-temperature {

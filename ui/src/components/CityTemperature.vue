@@ -1,8 +1,5 @@
 <template>
-  <h1>{{showCelsius ? temperature.celsius : temperature.fahrenheit}}
-    <a :href="showCelsius ? null : '#'" @click="showCelsius = !showCelsius">&#8451;</a>/
-    <a :href="showCelsius ? '#' : null" @click="showCelsius = !showCelsius">&#8457;</a>
-  </h1>
+  <h1>{{temperature.celsius}}&#186;</h1>
 </template>
 
 <script lang="ts">
