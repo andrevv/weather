@@ -53,7 +53,8 @@ class WeatherControllerTest {
 
         // given
         String city = "berlin";
-        Weather weather = new Weather(city, new Temperature(20, 68));
+        String description = "clear";
+        Weather weather = new Weather(city, description, new Temperature(20, 68));
         given(weatherService.getWeather(city)).willReturn(weather);
 
         // when

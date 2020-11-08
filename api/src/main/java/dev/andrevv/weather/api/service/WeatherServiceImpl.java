@@ -8,8 +8,6 @@ import dev.andrevv.weather.api.entity.Temperature;
 import dev.andrevv.weather.api.entity.Weather;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
@@ -33,6 +31,7 @@ public class WeatherServiceImpl implements WeatherService {
         var celsius = response.getTemperature();
         return new Weather(
                 city,
+                response.getDescription(),
                 new Temperature(
                         Math.round(celsius),
                         Math.round(temperatureConverter.toFahrenheit(celsius))));

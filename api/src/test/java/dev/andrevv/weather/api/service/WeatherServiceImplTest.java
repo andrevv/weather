@@ -41,9 +41,10 @@ class WeatherServiceImplTest {
     void getWeather() {
         // given
         String city = "moscow";
+        String description = "clear";
         double celsius = 20.0;
         double fahrenheit = 68.0;
-        OpenWeatherWeather response = new OpenWeatherWeather(city, celsius);
+        OpenWeatherWeather response = new OpenWeatherWeather(city, description, celsius);
         given(openWeatherClient.getWeather(city)).willReturn(response);
         given(temperatureConverter.toFahrenheit(celsius)).willReturn(fahrenheit);
 
@@ -52,6 +53,7 @@ class WeatherServiceImplTest {
 
         // then
         assertThat(weather.getCity()).isEqualTo(city);
+        assertThat(weather.getDescription()).isEqualTo(description);
         assertThat(weather.getTemperature().getCelsius()).isEqualTo((long)celsius);
         assertThat(weather.getTemperature().getFahrenheit()).isEqualTo((long)fahrenheit);
     }
