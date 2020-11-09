@@ -18,8 +18,10 @@ export default {
     }
   },
   setup (props) {
+    const label = props.weekday.charAt(0).toUpperCase() + props.weekday.substring(1, 3)
+
     return {
-      label: props.weekday.substr(0, 3)
+      label: label
     }
   }
 }
