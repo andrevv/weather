@@ -69,7 +69,10 @@ export default defineComponent({
         })
     })
 
-    const cityName = computed(() => props.city.charAt(0).toUpperCase() + props.city.slice(1))
+    const cityName = computed(() =>
+      props.city.split(' ')
+        .map(s => s.charAt(0).toUpperCase() + s.slice(1))
+        .join(' '))
 
     return {
       description,
