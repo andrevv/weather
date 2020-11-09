@@ -1,16 +1,15 @@
 <template>
   <div class="box-container">
     <div class="weather">
-      <h1>{{cityName}}</h1>
+      <div class="city">
+        <h1>{{cityName}}</h1>
+        <p class="date">Monday 16<sup>th</sup></p>
+      </div>
+      <div class="temperature">
+        <CityTemperature :city="city" />
+      </div>
     </div>
     <div class="forecast">
-      <div class="today-temperature">
-        <CityTemperature :city="city" />
-        <CityDate />
-      </div>
-      <div class="today-temperature-icon">
-        <CityWeatherIcon :name="description" />
-      </div>
       <div class="forecast-item forecast1">
         <CityTemperatureForecast weekday="tuesday" temperature="31" />
         <IconRain />
@@ -41,16 +40,12 @@
 import { defineComponent, ref, onMounted, computed } from 'vue'
 import CityTemperature from '@/components/CityTemperature.vue'
 import CityTemperatureForecast from '@/components/CityTemperatureForecast.vue'
-import CityDate from '@/components/CityDate.vue'
-import CityWeatherIcon from '@/components/CityWeatherIcon.vue'
 
 export default defineComponent({
   name: 'City',
   components: {
     CityTemperature,
-    CityTemperatureForecast,
-    CityDate,
-    CityWeatherIcon
+    CityTemperatureForecast
   },
   props: {
     city: {
@@ -100,29 +95,32 @@ sup {
   height: 30vh;
   color: white;
   padding: 20px;
+  display: flex;
+  align-content: center;
+}
+
+.temperature {
+  width: 40%;
+  display: flex;
+  justify-content: center;
 }
 
 .forecast {
   display: flex;
   width: 100%;
-  height: 20vh;
-}
-
-.today-temperature {
-  width: 20%;
-  text-align: center;
-}
-
-.today-temperature-icon {
-  width: 20%;
-  text-align: center;
+  height: 15vh;
+  justify-content: center;
 }
 
 .forecast-item {
   width: 10%;
   border-left: lightgrey solid 1px;
-  margin: 20px 0 20px 0;
+  margin: 0px 0 0 0;
   text-align: center;
+}
+
+.forecast-item:first-child {
+  border-left: none;
 }
 
 /* 

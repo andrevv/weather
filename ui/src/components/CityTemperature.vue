@@ -1,42 +1,46 @@
 <template>
-  <h1>{{temperature.celsius}}&#186;</h1>
+  <div class="temperature">
+    <div class="summary">
+      <p class="temp">{{temperature}}&#186;</p>
+    </div>
+    <div class="icon">
+      <CityWeatherIcon :name="description" />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 
-import { ref, onMounted, reactive } from 'vue'
+import { ref, onMounted } from 'vue'
+import CityWeatherIcon from '@/components/CityWeatherIcon.vue'
 
 export default {
   name: 'CityTemperature',
+  components: {
+    CityWeatherIcon
+  },
   props: {
     city: {
       type: String,
       required: true
-    },
-    scale: {
-      type: String,
-      default: 'celsius'
     }
   },
   setup (props) {
-    const temperature = reactive<Temperature>({
-      celsius: 0,
-      fahrenheit: 0
-    })
-    const showCelsius = ref(props.scale === 'celsius')
+    const temperature = ref()
+    const description = ref('')
 
     onMounted(() => {
       fetch(`/api/weather/cities/${props.city}`)
         .then(resp => resp.json())
         .then(data => {
-          temperature.celsius = data.temperature.celsius
-          temperature.fahrenheit = data.temperature.fahrenheit
+          temperature.value = data.temperature.celsius
+          description.value = data.description
         })
     })
 
     return {
       temperature,
-      showCelsius
+      description
     }
   }
 }
@@ -49,5 +53,24 @@ interface Temperature {
 </script>
 
 <style scoped>
+.temperature {
+  display: flex;
+  text-align: center;
+}
 
+.temp {
+  font-size: 2em;
+}
+
+.date {
+  
+}
+
+.summary {
+  flex: 1;
+}
+
+.icon {
+  flex: 1;
+}
 </style>
