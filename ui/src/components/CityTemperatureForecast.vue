@@ -27,3 +27,9 @@ export default {
 }
 
 </script>
+
+<style scoped>
+  p {
+    font-size: 1.2em;
+  }
+</style>
