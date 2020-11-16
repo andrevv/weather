@@ -10,8 +10,6 @@
 
 <script lang="ts">
 
-import { ref, onMounted } from 'vue'
-
 export default {
   name: 'CityTemperature',
   components: {
@@ -21,34 +19,15 @@ export default {
       type: String,
       required: true
     },
-    date: {
-      type: String,
+    temperature: {
+      type: Number,
       required: true
     }
   },
-  setup (props) {
-    const temperature = ref()
-    const description = ref('')
-
-    onMounted(() => {
-      fetch(`/api/weather/cities/${props.city}`)
-        .then(resp => resp.json())
-        .then(data => {
-          temperature.value = data.temperature.celsius
-          description.value = data.description
-        })
-    })
-
+  setup () {
     return {
-      temperature,
-      description
     }
   }
-}
-
-interface Temperature {
-  celsius: number,
-  fahrenheit: number
 }
 
 </script>

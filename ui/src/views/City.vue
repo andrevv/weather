@@ -6,7 +6,7 @@
         <p class="date">Monday {{dayOfMonth}}<sup>th</sup></p>
       </div>
       <div class="temperature">
-        <CityTemperature :city="city" :date="date" />
+        <CityTemperature :city="city" :temperature="temperature" />
       </div>
     </div>
     <div class="forecast">
@@ -37,9 +37,9 @@ export default defineComponent({
   },
   setup (props) {
     const forecasts = ref([])
-    let weather = ref()
     const dayOfMonth = ref()
     const weekday = ref()
+    const temperature = ref(0)
 
     const weekdays = [
       'Saturday',
@@ -53,11 +53,13 @@ export default defineComponent({
 
     onMounted(async () => {
       const weatherResponse = await fetch(`/api/weather/cities/${props.city}`)
-      weather.value = await weatherResponse.json()
+      const weather = await weatherResponse.json()
 
-      const date = new Date(weather.value.date)
+      const date = new Date(weather.date)
       dayOfMonth.value = date.getDate()
       weekday.value = weekdays[date.getDay()]
+
+      temperature.value = weather.temperature.celsius
 
       const r = await fetch(`/api/weather/cities/${props.city}/forecast`)
       const d = await r.json()
@@ -70,11 +72,11 @@ export default defineComponent({
         .join(' '))
 
     return {
-      weather,
       cityName,
       forecasts,
       dayOfMonth,
-      weekday
+      weekday,
+      temperature
     }
   }
 })
