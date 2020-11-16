@@ -3,7 +3,7 @@
     <div class="weather">
       <div class="city">
         <h1>{{cityName}}</h1>
-        <p class="date">Monday {{dayOfMonth}}<sup>th</sup></p>
+        <p class="date">{{weekday}} {{dayOfMonth}}<sup>th</sup></p>
       </div>
       <div class="temperature">
         <CityTemperature :city="city" :temperature="temperature" />
