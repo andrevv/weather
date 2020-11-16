@@ -11,10 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneOffset;
+import java.time.*;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -41,9 +38,12 @@ class WeatherServiceImplTest {
     void getWeather() {
         // given
         String city = "moscow";
+        String description = "clear";
         double celsius = 20.0;
         double fahrenheit = 68.0;
-        OpenWeatherWeather response = new OpenWeatherWeather(city, celsius);
+        long time = 1605554793;
+        int timezone = 10800;
+        OpenWeatherWeather response = new OpenWeatherWeather(city, description, celsius, time, timezone);
         given(openWeatherClient.getWeather(city)).willReturn(response);
         given(temperatureConverter.toFahrenheit(celsius)).willReturn(fahrenheit);
 
@@ -52,8 +52,14 @@ class WeatherServiceImplTest {
 
         // then
         assertThat(weather.getCity()).isEqualTo(city);
+        assertThat(weather.getDescription()).isEqualTo(description);
         assertThat(weather.getTemperature().getCelsius()).isEqualTo((long)celsius);
         assertThat(weather.getTemperature().getFahrenheit()).isEqualTo((long)fahrenheit);
+        assertThat(weather.getDate())
+                .isEqualTo(
+                        LocalDate.ofInstant(
+                                Instant.ofEpochSecond(time),
+                                ZoneOffset.ofTotalSeconds(timezone)));
     }
 
     @Test

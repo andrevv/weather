@@ -17,8 +17,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.ZoneOffset;
 import java.util.List;
 
@@ -53,7 +51,8 @@ class WeatherControllerTest {
 
         // given
         String city = "berlin";
-        Weather weather = new Weather(city, new Temperature(20, 68));
+        String description = "clear";
+        Weather weather = new Weather(city, description, new Temperature(20, 68), LocalDate.now());
         given(weatherService.getWeather(city)).willReturn(weather);
 
         // when
