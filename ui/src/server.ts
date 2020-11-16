@@ -30,6 +30,7 @@ export default function makeServer () {
 
         return {
           city: request.params.id,
+          date: new Date().toISOString(),
           temperature: cities[request.params.id].temperature,
           description: cities[request.params.id].description
         }

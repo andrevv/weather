@@ -4,7 +4,6 @@
       <p class="temp">{{temperature}}&#186;</p>
     </div>
     <div class="icon">
-      <CityWeatherIcon :name="description" />
     </div>
   </div>
 </template>
@@ -12,15 +11,17 @@
 <script lang="ts">
 
 import { ref, onMounted } from 'vue'
-import CityWeatherIcon from '@/components/CityWeatherIcon.vue'
 
 export default {
   name: 'CityTemperature',
   components: {
-    CityWeatherIcon
   },
   props: {
     city: {
+      type: String,
+      required: true
+    },
+    date: {
       type: String,
       required: true
     }
