@@ -19,13 +19,13 @@ export default {
   },
   setup (props) {
     const weekdays = [
+      'saturday',
       'monday',
       'tuesday',
       'wednesday',
       'thursday',
       'friday',
-      'sunday',
-      'saturday'
+      'sunday'
     ]
 
     const day = new Date(props.date).getDay()
