@@ -8,7 +8,7 @@
 export default {
   name: 'CityTemperatureForecast',
   props: {
-    weekday: {
+    date: {
       type: String,
       required: true
     },
@@ -18,7 +18,18 @@ export default {
     }
   },
   setup (props) {
-    const label = props.weekday.charAt(0).toUpperCase() + props.weekday.substring(1, 3)
+    const weekdays = [
+      'monday',
+      'tuesday',
+      'wednesday',
+      'thursday',
+      'friday',
+      'sunday',
+      'saturday'
+    ]
+
+    const day = new Date(props.date).getDay()
+    const label = weekdays[day].charAt(0).toUpperCase() + weekdays[day].substring(1, 3)
 
     return {
       label: label

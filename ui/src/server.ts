@@ -33,7 +33,47 @@ export default function makeServer () {
           temperature: cities[request.params.id].temperature,
           description: cities[request.params.id].description
         }
+      }),
+
+      this.get('/api/weather/cities/:id/forecast', (schema, request) => {
+        const next = nextISODay()
+        return {
+          city: request.params.id,
+          forecasts: [
+            {
+              date: next(),
+              temperature: 23
+            },
+            {
+              date: next(),
+              temperature: 21
+            },
+            {
+              date: next(),
+              temperature: 25
+            },
+            {
+              date: next(),
+              temperature: 22
+            },
+            {
+              date: next(),
+              temperature: 21
+            },
+            {
+              date: next(),
+              temperature: 23
+            },
+          ]
+        }
       })
     }
   })
+}
+
+function nextISODay() : () => string {
+  const now = new Date()
+  const date = now.getDate()
+  let day = 1
+  return () => new Date(now.setDate(date + day++)).toISOString()
 }

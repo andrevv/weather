@@ -10,26 +10,8 @@
       </div>
     </div>
     <div class="forecast">
-      <div class="forecast-item forecast1">
-        <CityTemperatureForecast weekday="tuesday" temperature="31" />
-        <IconRain />
-      </div>
-      <div class="forecast-item forecast2">
-        <CityTemperatureForecast weekday="wednesday" temperature="30" />
-        <IconCloudy />
-      </div>
-      <div class="forecast-item forecast3">
-        <CityTemperatureForecast weekday="thursday" temperature="33" />
-        <IconSnow />
-      </div>
-      <div class="forecast-item forecast4">
-        <CityTemperatureForecast weekday="friday" temperature="32" />
-      </div>
-      <div class="forecast-item forecast5">
-        <CityTemperatureForecast weekday="saturday" temperature="33" />
-      </div>
-      <div class="forecast-item forecast6">
-        <CityTemperatureForecast weekday="sunday" temperature="31" />
+      <div class="forecast-item" v-for="forecast in forecasts" :key="forecast.date">
+        <CityTemperatureForecast :date="forecast.date" :temperature="forecast.temperature" />
       </div>
     </div>
   </div>
@@ -55,13 +37,18 @@ export default defineComponent({
   },
   setup (props) {
     const description = ref('')
+    const forecasts = ref([])
 
-    onMounted(() => {
+    onMounted(async () => {
       fetch(`/api/weather/cities/${props.city}`)
         .then(resp => resp.json())
         .then(data => {
           description.value = data.description
         })
+
+      const r = await fetch(`/api/weather/cities/${props.city}/forecast`)
+      const d = await r.json()
+      forecasts.value = d.forecasts
     })
 
     const cityName = computed(() =>
@@ -71,7 +58,8 @@ export default defineComponent({
 
     return {
       description,
-      cityName
+      cityName,
+      forecasts
     }
   }
 })
@@ -122,34 +110,5 @@ sup {
 .forecast-item:first-child {
   border-left: none;
 }
-
-/* 
-.temperature {
-  background: tomato;
-}
-
-.forecast {
-  background: mistyrose;
-  border: 1px solid thistle;
-  width: 10%;
-}
-
-.forecast1 {
-}
-
-.forecast2 {
-}
-
-.forecast3 {
-}
-
-.forecast4 {
-}
-
-.forecast5 {
-}
-
-.forecast6 {
-} */
 
 </style>
