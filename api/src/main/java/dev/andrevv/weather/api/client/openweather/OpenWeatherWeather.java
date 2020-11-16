@@ -1,5 +1,6 @@
 package dev.andrevv.weather.api.client.openweather;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,9 +19,17 @@ public class OpenWeatherWeather {
     @JsonProperty("name")
     private String city;
 
+    @JsonIgnore
     private String description;
 
+    @JsonIgnore
     private double temperature;
+
+    @JsonProperty("dt")
+    private long time;
+
+    @JsonProperty("timezone")
+    private int timezone;
 
     @JsonProperty("main")
     private void unpackMain(Map<String, Object> main) {
