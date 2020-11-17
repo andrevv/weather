@@ -3,7 +3,7 @@
     <div class="weather">
       <div class="city">
         <h1>{{capitalize(city)}}</h1>
-        <p class="date">{{dayOfWeek(weather.date)}} {{dayOfMonth(weather.date)}}<sup>th</sup></p>
+        <p class="date">{{dayOfWeek}} {{dayOfMonth}}<sup>th</sup></p>
       </div>
       <div class="temperature">
         <CityTemperature :city="city" :temperature="weather.temperature" />
@@ -48,9 +48,9 @@ export default defineComponent({
     return {
       weather,
       forecasts,
-      dayOfWeek,
-      dayOfMonth,
-      capitalize
+      capitalize,
+      dayOfWeek: dayOfWeek(weather.date),
+      dayOfMonth: dayOfMonth(weather.date)
     }
   }
 })
