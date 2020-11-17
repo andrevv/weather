@@ -5,11 +5,13 @@
 
 <script lang="ts">
 
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'CityTemperatureForecast',
   props: {
     date: {
-      type: String,
+      type: Date,
       required: true
     },
     temperature: {
@@ -35,7 +37,7 @@ export default {
       label: label
     }
   }
-}
+})
 
 </script>
 
