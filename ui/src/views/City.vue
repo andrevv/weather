@@ -2,11 +2,11 @@
   <div class="box-container">
     <div class="weather">
       <div class="city">
-        <h1>{{cityName}}</h1>
-        <p class="date">{{weekday}} {{dayOfMonth}}<sup>th</sup></p>
+        <h1>{{capitalize(city)}}</h1>
+        <p class="date">{{dayOfWeek(weather.date)}} {{dayOfMonth(weather.date)}}<sup>th</sup></p>
       </div>
       <div class="temperature">
-        <CityTemperature :city="city" :temperature="temperature" />
+        <CityTemperature :city="city" :temperature="weather.temperature" />
       </div>
     </div>
     <div class="forecast">
@@ -19,9 +19,13 @@
 
 <script lang="ts">
 
-import { defineComponent, ref, onMounted, computed } from 'vue'
+import { defineComponent, toRefs } from 'vue'
 import CityTemperature from '@/components/CityTemperature.vue'
 import CityTemperatureForecast from '@/components/CityTemperatureForecast.vue'
+import useWeather from '@/hooks/useWeather'
+import useForecast from '@/hooks/useForecast'
+import { dayOfWeek, dayOfMonth } from '@/lib/date'
+import { capitalize } from '@/lib/string'
 
 export default defineComponent({
   name: 'City',
@@ -36,47 +40,17 @@ export default defineComponent({
     }
   },
   setup (props) {
-    const forecasts = ref([])
-    const dayOfMonth = ref()
-    const weekday = ref()
-    const temperature = ref(0)
+    const { city } = toRefs(props)
 
-    const weekdays = [
-      'Saturday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Sunday'
-    ]
-
-    onMounted(async () => {
-      const weatherResponse = await fetch(`/api/weather/cities/${props.city}`)
-      const weather = await weatherResponse.json()
-
-      const date = new Date(weather.date)
-      dayOfMonth.value = date.getDate()
-      weekday.value = weekdays[date.getDay()]
-
-      temperature.value = weather.temperature.celsius
-
-      const r = await fetch(`/api/weather/cities/${props.city}/forecast`)
-      const d = await r.json()
-      forecasts.value = d.forecasts
-    })
-
-    const cityName = computed(() =>
-      props.city.split(' ')
-        .map(s => s.charAt(0).toUpperCase() + s.slice(1))
-        .join(' '))
+    const { weather } = useWeather(city)
+    const { forecasts } = useForecast(city)
 
     return {
-      cityName,
+      weather,
       forecasts,
+      dayOfWeek,
       dayOfMonth,
-      weekday,
-      temperature
+      capitalize
     }
   }
 })
