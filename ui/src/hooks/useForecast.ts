@@ -8,10 +8,15 @@ export default function (city: Ref<string>) {
 		const response = await fetch(`/api/weather/cities/${city.value}/forecast`)
 		const data = await response.json()
 		
-		forecasts.value = data.forecasts.map((x: { date: string; temperature: number }) => ({
-			date: new Date(x.date),
-			temperature: x.temperature
-		}))
+		forecasts.value = data.forecasts
+			.map((x: { date: string; temperature: number }) => ({
+				date: new Date(x.date),
+				temperature: x.temperature
+			}))
+			.sort((s: Forecast, t: Forecast) : number => {
+				if (s.date === t.date) return 0
+				return s.date < t.date ? -1 : 1
+			})
 	}
 
 	onMounted(fetchForecast)
