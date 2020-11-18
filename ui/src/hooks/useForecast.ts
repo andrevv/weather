@@ -9,7 +9,7 @@ export default function (city: Ref<string>) {
 		const data = await response.json()
 		
 		forecasts.value = data.forecasts
-			.map((x: { date: string; temperature: number }) => ({
+			.map((x: ForecastContract) => ({
 				date: new Date(x.date),
 				temperature: x.temperature
 			}))
@@ -24,6 +24,11 @@ export default function (city: Ref<string>) {
 	return {
 		forecasts
 	}
+}
+
+interface ForecastContract {
+	date: string,
+	temperature: number
 }
 
 interface Forecast {
