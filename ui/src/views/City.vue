@@ -6,7 +6,8 @@
         <p class="date">{{dayOfWeek}} {{dayOfMonth}}<sup>th</sup></p>
       </div>
       <div class="temperature">
-        <CityTemperature :city="city" :temperature="weather.temperature" />
+        <p>{{weather.temperature}}&#186;</p>
+        <IconClear />
       </div>
     </div>
     <div class="forecast">
@@ -20,8 +21,8 @@
 <script lang="ts">
 
 import { defineComponent, toRefs } from 'vue'
-import CityTemperature from '@/components/CityTemperature.vue'
 import CityTemperatureForecast from '@/components/CityTemperatureForecast.vue'
+import IconClear from '@/components/IconClear.vue'
 import useWeather from '@/hooks/useWeather'
 import useForecast from '@/hooks/useForecast'
 import { dayOfWeek, dayOfMonth } from '@/lib/date'
@@ -30,8 +31,8 @@ import { capitalize } from '@/lib/string'
 export default defineComponent({
   name: 'City',
   components: {
-    CityTemperature,
-    CityTemperatureForecast
+    CityTemperatureForecast,
+    IconClear
   },
   props: {
     city: {
@@ -82,6 +83,7 @@ sup {
   width: 40%;
   display: flex;
   justify-content: center;
+  font-size: 2em;
 }
 
 .forecast {
