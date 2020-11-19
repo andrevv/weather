@@ -7,7 +7,9 @@
       </div>
       <div class="temperature">
         <p>{{weather.temperature}}&#186;</p>
-        <IconClear />
+      </div>
+      <div class="icon">
+        <CityWeatherIcon :name="weather.description" />
       </div>
     </div>
     <div class="forecast">
@@ -22,7 +24,7 @@
 
 import { defineComponent, toRefs } from 'vue'
 import CityTemperatureForecast from '@/components/CityTemperatureForecast.vue'
-import IconClear from '@/components/IconClear.vue'
+import CityWeatherIcon from '@/components/CityWeatherIcon.vue'
 import useWeather from '@/hooks/useWeather'
 import useForecast from '@/hooks/useForecast'
 import { dayOfWeek, dayOfMonth } from '@/lib/date'
@@ -32,7 +34,7 @@ export default defineComponent({
   name: 'City',
   components: {
     CityTemperatureForecast,
-    IconClear
+    CityWeatherIcon
   },
   props: {
     city: {
@@ -80,10 +82,16 @@ sup {
 }
 
 .temperature {
-  width: 40%;
-  display: flex;
-  justify-content: center;
-  font-size: 2em;
+  width: 15%;
+  text-align: center;
+  font-size: 3em;
+  background: mistyrose;
+}
+
+.icon {
+  width: 15%;
+  text-align: center;
+  background: cornflowerblue;
 }
 
 .forecast {

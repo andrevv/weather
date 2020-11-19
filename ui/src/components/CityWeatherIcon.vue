@@ -1,8 +1,8 @@
 <template>
-  <IconClear v-if="weatherName === 'clear'"/>
-  <IconRain v-if="weatherName === 'rain'"/>
-  <IconCloudy v-if="weatherName === 'cloudy'"/>
-  <IconSnow v-if="weatherName === 'snow'"/>
+  <IconClear white v-if="weatherName === 'clear'"/>
+  <IconRain white v-if="weatherName === 'rain'"/>
+  <IconCloudy white v-if="weatherName === 'cloudy'"/>
+  <IconSnow white v-if="weatherName === 'snow'"/>
 </template>
 
 <script lang="ts">
