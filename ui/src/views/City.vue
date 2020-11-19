@@ -85,13 +85,11 @@ sup {
   width: 15%;
   text-align: center;
   font-size: 3em;
-  background: mistyrose;
 }
 
 .icon {
   width: 15%;
   text-align: center;
-  background: cornflowerblue;
 }
 
 .forecast {
