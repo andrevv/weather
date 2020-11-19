@@ -81,6 +81,10 @@ sup {
   align-content: center;
 }
 
+.city .date {
+  font-size: 1.35em;
+}
+
 .temperature {
   width: 15%;
   text-align: center;
