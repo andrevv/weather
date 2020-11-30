@@ -1,8 +1,8 @@
-package dev.andrevv.weatherapicities.controller;
+package dev.andrevv.weather.api.cities.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.andrevv.weatherapicities.entity.City;
-import dev.andrevv.weatherapicities.service.CitySearcher;
+import dev.andrevv.weather.api.cities.entity.City;
+import dev.andrevv.weather.api.cities.service.CitySearcher;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,11 +13,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import javax.management.ObjectName;
-
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -55,7 +52,7 @@ class CityControllerTest {
 
         // when
         // then
-        mvc.perform(MockMvcRequestBuilders.get("/api/cities/search/ber"))
+        mvc.perform(MockMvcRequestBuilders.get("/api/cities/search?token=ber"))
             .andDo(print())
             .andExpect(status().isOk())
             .andExpect(content().json(cityJson.write(cities).getJson()));

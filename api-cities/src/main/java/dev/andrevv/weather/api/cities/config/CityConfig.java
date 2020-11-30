@@ -1,7 +1,7 @@
-package dev.andrevv.weatherapicities.config;
+package dev.andrevv.weather.api.cities.config;
 
-import dev.andrevv.weatherapicities.service.CityReader;
-import dev.andrevv.weatherapicities.service.JsonFileCityReader;
+import dev.andrevv.weather.api.cities.service.CityReader;
+import dev.andrevv.weather.api.cities.service.JsonFileCityReader;
 import lombok.SneakyThrows;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

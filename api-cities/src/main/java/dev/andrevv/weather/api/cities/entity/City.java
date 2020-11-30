@@ -1,4 +1,4 @@
-package dev.andrevv.weatherapicities.entity;
+package dev.andrevv.weather.api.cities.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

@@ -1,6 +1,6 @@
-package dev.andrevv.weatherapicities.service;
+package dev.andrevv.weather.api.cities.service;
 
-import dev.andrevv.weatherapicities.entity.City;
+import dev.andrevv.weather.api.cities.entity.City;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

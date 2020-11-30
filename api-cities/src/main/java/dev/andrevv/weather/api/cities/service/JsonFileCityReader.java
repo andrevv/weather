@@ -1,8 +1,8 @@
-package dev.andrevv.weatherapicities.service;
+package dev.andrevv.weather.api.cities.service;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.andrevv.weatherapicities.entity.City;
+import dev.andrevv.weather.api.cities.entity.City;
 import lombok.SneakyThrows;
 
 import java.nio.file.Files;

@@ -1,4 +1,4 @@
-package dev.andrevv.weatherapicities.service;
+package dev.andrevv.weather.api.cities.service;
 
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.BeforeEach;
