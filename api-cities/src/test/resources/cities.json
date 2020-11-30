@@ -1,0 +1,5 @@
+[
+  {"country": "England", "geonameid": 1, "name": "London", "subcountry": "London"},
+  {"country": "Germany", "geonameid": 2, "name": "Berlin", "subcountry": "Berlin"},
+  {"country": "Russia", "geonameid": 3, "name": "Moscow", "subcountry": "Moscow"}
+]
